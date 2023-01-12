@@ -3,7 +3,9 @@ description: "Github action to build an MkDocs site and upload to S3"
 author: vini
 runs:
   using: "docker"
-  image: ${{ env.DOCKER_IMAGE }}
+  args:
+    - pull
+    - python:${{ inputs.python-version }}-buster
   entrypoint: 'entrypoint.sh'
 outputs:
   built_dir:
@@ -13,5 +15,3 @@ inputs:
     description: The Python version to use.
     default: '3.9'
     required: true
-env:
-  DOCKER_IMAGE: "python:${{ inputs.python-version }}-buster"
