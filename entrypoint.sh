@@ -19,6 +19,7 @@ pip install -r requirements.txt
 pip install mkdocs-minify-plugin>=0.2
 
 mkdocs build -d public
+echo "built_dir=$PWD/public" >> $GITHUB_OUTPUT
 
 ####################################################
 # Build completed

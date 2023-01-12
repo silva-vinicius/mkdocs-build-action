@@ -1,9 +1,12 @@
 name: "mkdocs-build-action"
 description: "Github action to build an MkDocs site and upload to S3"
-author: thomasattree
+author: vini
 runs:
   using: docker
   image: Dockerfile
+outputs:
+  built_dir:
+    description: 'Directory containing the built documentation website'
 branding:
   icon: arrow-up-circle
   color: red
