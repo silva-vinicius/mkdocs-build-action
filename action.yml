@@ -7,6 +7,9 @@ runs:
 outputs:
   built_dir:
     description: 'Directory containing the built documentation website'
-branding:
-  icon: arrow-up-circle
-  color: red
+inputs:
+  python-version:
+    description: The Python version to use.
+    default: '3.9'
+    required: true
+

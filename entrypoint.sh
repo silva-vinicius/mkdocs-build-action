@@ -15,6 +15,7 @@ chmod -R a+w /github/workspace
 # Build the Mkdocs site
 ####################################################
 
+pip install --quiet --no-cache-dir mkdocs mkapi
 pip install -r requirements.txt
 pip install mkdocs-minify-plugin>=0.2
 
