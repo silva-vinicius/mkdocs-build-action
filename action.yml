@@ -3,7 +3,7 @@ description: "Github action to build an MkDocs site and upload to S3"
 author: vini
 runs:
   using: "docker"
-  image: python:3.9-buster
+  image: docker://python:3.9-buster
   entrypoint: 'entrypoint.sh'
 outputs:
   built_dir:
