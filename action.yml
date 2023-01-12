@@ -1,6 +1,11 @@
 name: "mkdocs-build-action"
 description: "Github action to build an MkDocs site and upload to S3"
 author: vini
+inputs:
+  python-version:
+    description: The Python version to use.
+    default: '3.9'
+    required: true
 runs:
   using: "docker"
   image: "python:${{ inputs.python-version }}-buster"
@@ -8,9 +13,3 @@ runs:
 outputs:
   built_dir:
     description: 'Directory containing the built documentation website'
-inputs:
-  python-version:
-    description: The Python version to use.
-    default: '3.9'
-    required: true
-
