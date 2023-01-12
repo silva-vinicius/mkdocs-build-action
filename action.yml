@@ -2,8 +2,9 @@ name: "mkdocs-build-action"
 description: "Github action to build an MkDocs site and upload to S3"
 author: vini
 runs:
-  using: docker
-  image: Dockerfile
+  using: "docker"
+  image: "python:${{ inputs.python-version }}-buster"
+  entrypoint: 'entrypoint.sh'
 outputs:
   built_dir:
     description: 'Directory containing the built documentation website'
