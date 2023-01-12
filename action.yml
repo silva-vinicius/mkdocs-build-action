@@ -4,7 +4,7 @@ author: vini
 runs:
   using: "docker"
   image: docker://python:3.9-buster
-  entrypoint: 'entrypoint.sh'
+  entrypoint: '/github/workspace/entrypoint.sh'
 outputs:
   built_dir:
     description: 'Directory containing the built documentation website'
