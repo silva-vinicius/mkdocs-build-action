@@ -1,4 +1,4 @@
-FROM python:${{ inputs.python-version }}-buster
+FROM python:3.9-buster
 
 RUN apk add build-base
 
