@@ -9,9 +9,9 @@ docker pull python:$python_version-buster
 # Run a container with the pulled image
 container_id=$(docker run -d -v $(pwd)/public:/public python:$python_version-buster)
 
-docker cp build-docs.sh container_id:/build-docs.sh
+docker cp build-docs.sh $container_id:/build-docs.sh
 
-docker exec container_id /bin/bash -c 'chmod +x build-docs.sh; build-docs.sh'
+docker exec $container_id /bin/bash -c 'chmod +x build-docs.sh; build-docs.sh'
 
 echo "built_dir=public" >> $GITHUB_OUTPUT
 
