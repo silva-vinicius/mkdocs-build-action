@@ -17,7 +17,11 @@ runs:
     - run: setup-docker.sh ${{ inputs.python-version }}
       id: setup_docker
       shell: bash
+    - run: ls ${{ github.action_path }}
+      shell: bash
     - run: docker cp build-docs.sh ${{ steps.setup_docker.outputs.container_id }}:${{ github.action_path }}/build-docs.sh
+      shell: bash
+    - run: ls
       shell: bash
     - run: docker exec ${{ steps.setup_docker.outputs.container_id }} /bin/bash -c 'chmod +x /build-docs.sh; /build-docs.sh'
       shell: bash
