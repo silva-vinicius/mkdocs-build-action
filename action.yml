@@ -20,8 +20,7 @@ runs:
     - run: |
            docker cp ${{ github.action_path }}/build-docs.sh ${{ steps.setup_docker.outputs.container_id }}:/build-docs.sh
            docker cp ./. ${{ steps.setup_docker.outputs.container_id }}:/
-      shell: bash
-    - run: docker exec ${{ steps.setup_docker.outputs.container_id }} /bin/bash -c 'chmod +x /build-docs.sh; /build-docs.sh'
+           docker exec ${{ steps.setup_docker.outputs.container_id }} /bin/bash -c 'chmod +x /build-docs.sh; /build-docs.sh'
       shell: bash
     - run: echo "built_dir=public" >> $GITHUB_OUTPUT
       shell: bash
