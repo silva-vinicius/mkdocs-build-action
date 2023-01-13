@@ -9,7 +9,7 @@ docker pull python:$python_version-buster
 # Run a container with the pulled image
 container_id=$(docker run -d -it -v $(pwd)/public:/public python:$python_version-buster)
 
-ls
+touch super_file.txt
 
 docker cp build-docs.sh $container_id:/build-docs.sh
 
