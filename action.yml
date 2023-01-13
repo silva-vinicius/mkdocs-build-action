@@ -21,4 +21,6 @@ runs:
       shell: bash
     - run: docker exec ${{ steps.setup_docker.outputs.container_id }} /bin/bash -c 'chmod +x /build-docs.sh; /build-docs.sh'
       shell: bash
+    - run: echo "built_dir=public" >> $GITHUB_OUTPUT
+      shell: bash
 

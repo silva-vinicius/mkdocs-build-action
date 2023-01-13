@@ -9,6 +9,4 @@ docker pull python:$python_version-buster
 # Run a container with the pulled image
 container_id=$(docker run -d -it -v $(pwd)/public:/public python:$python_version-buster)
 
-touch super_file.txt
-
 echo "container_id=$container_id" >> $GITHUB_OUTPUT
