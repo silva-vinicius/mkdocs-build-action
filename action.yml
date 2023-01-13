@@ -9,7 +9,7 @@ inputs:
 outputs:
   built_dir:
     description: 'Directory containing the built documentation website'
-    value: ${{ steps.build_docs.outputs.built_dir }}
+    value: ${{ steps.setup_docker.outputs.built_dir }}
 runs:
   using: "composite"
   steps:
@@ -21,7 +21,5 @@ runs:
     - run: |
            docker cp ${{ github.action_path }}/build-docs.sh ${{ steps.setup_docker.outputs.container_id }}:/build-docs.sh
            docker cp ./. ${{ steps.setup_docker.outputs.container_id }}:/
-           docker exec ${{ steps.setup_docker.outputs.container_id }} /bin/bash -c 'chmod +x /build-docs.sh; /build-docs.sh'
-           echo "built_dir=${{ steps.setup_docker.outputs.built_dir }}" >> $GITHUB_OUTPUT
-      id: build_docs
+           docker exec ${{ steps.setup_docker.outputs.container_id }} /bin/bash -c 'chmod +x /build-docs.sh; /build-docs.sh'      
       shell: bash
