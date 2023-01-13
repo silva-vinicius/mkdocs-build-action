@@ -20,5 +20,3 @@ mkdocs build -d public
 ####################################################
 
 echo "Completed mkdocs build"
-
-echo "built_dir=public" >> $GITHUB_OUTPUT
