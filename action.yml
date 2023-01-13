@@ -14,8 +14,11 @@ runs:
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: composite-script.sh ${{ inputs.python-version }}
+    - run: setup-docker.sh ${{ inputs.python-version }}
+      id: setup_docker
       shell: bash
-    - run: docker ps
+    - run: docker cp build-docs.sh ${{ steps.setup_docker.outputs.container_id }}:/build-docs.sh
+      shell: bash
+    - run: docker exec ${{ steps.setup_docker.outputs.container_id }} /bin/bash -c 'chmod +x /build-docs.sh; /build-docs.sh'
       shell: bash
 
