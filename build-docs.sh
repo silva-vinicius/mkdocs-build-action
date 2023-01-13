@@ -9,7 +9,7 @@ echo "Starting mkdocs build"
 # Set workspace permissions
 ####################################################
 
-chmod -R a+w /github/workspace
+# chmod -R a+w /github/workspace
 
 ####################################################
 # Build the Mkdocs site
