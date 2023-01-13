@@ -13,4 +13,5 @@ runs:
   using: "composite"
   steps:
     - run: composite-script.sh ${{ inputs.python-version }}
+    - shell: bash
 
