@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -x # verbose mode
 set -e # stop executing after error
