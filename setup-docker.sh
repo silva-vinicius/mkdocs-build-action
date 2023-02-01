@@ -10,3 +10,4 @@ docker pull python:$python_version-buster
 container_id=$(docker run -d -it -v $(pwd)/public:/public python:$python_version-buster)
 
 echo "container_id=$container_id" >> $GITHUB_OUTPUT
+echo "built_dir=$(pwd)/public" >> $GITHUB_OUTPUT
