@@ -1,14 +1,18 @@
 name: "mkdocs-build-action"
-description: "Github action to build an MkDocs site and upload to S3"
-author: vini
+description: "Github action to build an MkDocs site and upload to S3."
+author: "Vinicius Silva"
 inputs:
   python-version:
-    description: The Python version to use.
-    default: '3.9'
+    description: "The Python version to use."
+    default: "3.8"
+    required: true
+  docs-path:
+    description: "The directory containing mkdocs.yml file and docs folder"
+    default: "./"
     required: true
 outputs:
   built_dir:
-    description: 'Directory containing the built documentation website'
+    description: "Directory containing the built documentation website."
     value: ${{ steps.setup_docker.outputs.built_dir }}
 runs:
   using: "composite"
@@ -21,5 +25,6 @@ runs:
     - run: |
            docker cp ${{ github.action_path }}/build-docs.sh ${{ steps.setup_docker.outputs.container_id }}:/build-docs.sh
            docker cp ./. ${{ steps.setup_docker.outputs.container_id }}:/
-           docker exec ${{ steps.setup_docker.outputs.container_id }} /bin/bash -c 'chmod +x /build-docs.sh; /build-docs.sh'      
+           docker exec ${{ steps.setup_docker.outputs.container_id }} /bin/bash -c 'chmod +x /build-docs.sh; /build-docs.sh ${{ inputs.docs-path }}'      
+           echo "built_dir=public" >> $GITHUB_OUTPUT
       shell: bash
