@@ -5,11 +5,11 @@ inputs:
   python-version:
     description: "The Python version to use."
     default: "3.8"
-    required: true
+    # required: true
   docs-path:
     description: "The directory containing mkdocs.yml file and docs folder"
     default: "./"
-    required: true
+    # required: true
 outputs:
   built_dir:
     description: "Directory containing the built documentation website."
